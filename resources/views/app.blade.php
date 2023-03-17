@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Basics of Programming</title>
-        @vite('resource/js/app.js')
-        @inertiaHead
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Basics of programming</title>
+    @routes
+    @vite('resources/js/app.js')
+    @inertiaHead
+</head>
 
-    <body>
-    @inertia
-    </body>
+<body>
+@inertia
+</body>
+
 </html>
