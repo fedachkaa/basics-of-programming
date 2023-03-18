@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    @apply bg-light-yellow;
+}
 .header {
     @apply w-full mx-0 bg-deep-blue;
 }
@@ -12,7 +15,9 @@
 .main-button{
     @apply hover:scale-110 px-4 py-2 rounded-full text-lg font-medium bg-light-yellow hover:bg-deep-yellow;
 }
-
+.test-button{
+    @apply hover:scale-110 px-4 py-2 rounded-full text-lg font-medium bg-teal-300 hover:bg-teal-400;
+}
 .register-button{
     @apply hover:scale-110 bg-teal-300 w-full px-4 py-2 rounded-full text-lg font-medium hover:bg-teal-400 text-black;
 }

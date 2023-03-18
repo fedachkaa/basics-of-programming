@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StudySectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,5 @@ Route::get('login', [AuthController::class, 'create'])
 Route::post('login', [AuthController::class, 'store'])
     ->name('login.store');
 Route::get('logout', [AuthController::class, 'destroy'])->name('logout');
+
+Route::resource('study', StudySectionController::class);
