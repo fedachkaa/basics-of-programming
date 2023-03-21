@@ -12,4 +12,9 @@ class StudySection extends Model
     public $timestamps = false;
 
     protected $fillable = ['title', 'content', 'image'];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_study_section')->withPivot('user_result');
+    }
 }

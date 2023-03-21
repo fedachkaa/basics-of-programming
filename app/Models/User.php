@@ -53,4 +53,8 @@ class User extends Authenticatable
         );
     }
 
+    public function study_sections()
+    {
+        return $this->belongsToMany(StudySection::class, 'user_study_section')->withPivot('user_result');
+    }
 }

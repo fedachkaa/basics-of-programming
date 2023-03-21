@@ -31,3 +31,5 @@ Route::post('login', [AuthController::class, 'store'])
 Route::get('logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::resource('study', StudySectionController::class);
+
+Route::get('user', [\App\Http\Controllers\UserAccountController::class, 'index'])->name('user');

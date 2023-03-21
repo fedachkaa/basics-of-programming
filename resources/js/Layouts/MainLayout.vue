@@ -12,7 +12,7 @@
                 </div>
 
                 <div v-if="user" class="flex justify-end gap-2">
-                    <Link class="username"> {{user.name}}</Link>
+                    <Link :href="route('user')" class="username"> {{user.name}}</Link>
                     <Link :href="route('logout')" class="main-button">Вийти</Link>
                 </div>
                 <div v-else class="flex justify-end gap-2">
