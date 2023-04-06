@@ -1,16 +1,15 @@
 <template>
     <MainLayout>
-        <div class="bg-light-yellow">
-            <div class="text-3xl text-center">Теми:</div>
-            <div class="grid grid-cols-3 gap-5" >
-                <Box v-for="studySection in studySections" :key="studySection.id" :studySection="studySection">
+        <div class="h-screen">
+            <div class="text-3xl text-center p-3">Теми:</div>
+            <div class="grid grid-cols-1" >
+                <div class="study-section" v-for="studySection in studySections" :key="studySection.id" :studySection="studySection">
                     <Link :href="route('study.show', {study: studySection.id})">
-                        <div class="text-xl font-medium mb-2"> {{studySection.id}}. {{studySection.title}}</div>
-                        <img class="m-auto rounded-md content-center" src="../../../../storage/app/public/images/img6.jpeg">
-                        <div>Пройдено / Не пройдено</div>
+                        <div class="text-xl font-medium"> {{studySection.id}}. {{studySection.title}}</div>
                     </Link>
-                </Box>
+                </div>
             </div>
+
         </div>
     </MainLayout>
 </template>

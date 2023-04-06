@@ -3,40 +3,65 @@
 @tailwind utilities;
 
 body{
-    @apply bg-light-yellow;
+    @apply bg-white mb-0;
 }
 .header {
-    @apply w-full mx-0 bg-deep-blue;
+    @apply w-full mx-0;
 }
 .main-title{
-    @apply text-4xl tracking-wide font-bold text-white;
+    @apply text-4xl tracking-wide font-bold
+}
+
+.study-section{
+    @apply font-medium select-none rounded-full border-black transition duration-700 w-fit mx-auto rounded-full border-2 border-black p-3 my-4 hover:bg-black hover:text-white hover:scale-110 hover:cursor-default;
 }
 
 .main-button{
-    @apply hover:scale-110 px-4 py-2 rounded-full text-lg font-medium bg-light-yellow hover:bg-deep-yellow;
+    @apply transition duration-700 hover:bg-black hover:text-white hover:scale-110 text-lg font-medium border-2 rounded-full p-2 mx-2 border-black
 }
 .test-button{
     @apply hover:scale-110 px-4 py-2 rounded-full text-lg font-medium bg-teal-300 hover:bg-teal-400;
 }
-.register-button{
-    @apply hover:scale-110 bg-teal-300 w-full px-4 py-2 rounded-full text-lg font-medium hover:bg-teal-400 text-black;
+.signup-button{
+    @apply transition duration-700 hover:bg-black hover:text-white hover:scale-110 text-lg text-black font-medium border-2 rounded-full p-2 mx-2 border-black bg-white
 }
 .username {
-    @apply text-white font-medium px-4 py-2 text-lg hover:scale-110;
+    @apply text-white hover:scale-110 text-lg font-medium border-2 rounded-full p-2 mx-2 border-deep-blue bg-deep-blue
 }
 
 .main-form {
-    @apply bg-deep-blue text-white rounded-xl
+    @apply bg-deep-blue bg-opacity-80 text-white rounded-xl
 }
 .label {
     @apply text-center block mb-1 font-medium
 }
 
 .input {
-    @apply bg-light-yellow opacity-80 block w-full p-2 rounded-md shadow-sm border border-gray-300 dark:border-gray-600 text-gray-500
+    @apply  block w-full p-2 rounded-md shadow-sm border border-gray-300 dark:border-gray-600 text-gray-500
 }
 
 .input-error {
     @apply text-sm text-red-500 dark:text-red-400
 }
 
+.input-radio{
+    @apply pl-1 hover:scale-110
+}
+
+.header-table-l{
+    @apply border bg-opacity-80 rounded rounded-r-none border-r-0 my-1 ml-2 p-2 text-center font-medium bg-deep-blue border-deep-blue text-white text-xl
+}
+.header-table-r{
+    @apply border bg-opacity-80 rounded rounded-l-none border-l-0 my-1 mr-2 p-2 text-center font-medium bg-deep-blue border-deep-blue text-white text-xl
+}
+
+.item-table-l{
+    @apply border-2 rounded rounded-r-none border-r-0 my-1 ml-2 p-2 text-center font-medium text-lg border-deep-blue
+}
+.item-table-r{
+    @apply border-2 rounded rounded-l-none border-l-0 my-1 mr-2 p-2 text-center font-medium text-lg border-deep-blue
+}
+
+.flash-success{
+    @apply w-1/2 mx-auto text-center m-4 border rounded-full border-green-200 bg-green-50 p-2
+}

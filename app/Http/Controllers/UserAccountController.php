@@ -14,6 +14,7 @@ class UserAccountController extends Controller
         $user_id = Auth::user()->id;
         $user = User::where('id', $user_id)->first();
         $study_sections = User::find($user_id)->study_sections()->get();
+
         /*
         foreach ($user->study_sections as $study_section) {
             dd( $study_section->pivot->user_result);

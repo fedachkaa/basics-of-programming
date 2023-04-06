@@ -1,7 +1,7 @@
 <template>
     <MainLayout>
-        <div class="grid grid-cols-1 grid-rows-4 bg-light-yellow">
-            <form @submit.prevent="login" class="row-start-2 row-span-2  main-form w-1/2 m-auto">
+        <div class="h-screen flex justify-center">
+            <form @submit.prevent="login" class="main-form w-1/2 m-auto">
                 <label class="label font-md text-4xl">Авторизація</label>
                 <div class="mt-4 w-1/2 mx-auto">
                     <label for="email" class="label">Електронна пошта</label>
@@ -13,20 +13,16 @@
                 </div>
 
                 <div class="mt-4 w-1/2 mx-auto">
-
                     <label for="password" class="label">Пароль</label>
-
                     <input id="password" v-model="form.password"
                        type="password" class="input"/>
-
                     <div v-if="form.errors.password" class="input-error">
                         {{ form.errors.password }}
-
                     </div>
                 </div>
 
-                <div class="mt-4 py-3 w-1/2 mx-auto ">
-                    <button class="register-button" type="submit">
+                <div class="mt-4 py-3 w-1/2 mx-auto text-center">
+                    <button class="signup-button" type="submit">
                         Увійти!
                     </button>
                 </div>

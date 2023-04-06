@@ -25,7 +25,7 @@ class AuthController extends Controller
         }
         $request->session()->regenerate();
 
-        return redirect()->route('home')->with('success', 'Logged in');
+        return redirect()->route('home')->with('success', 'Успішний вхід в акаунт!');
     }
 
     public function destroy(Request $request)
@@ -35,6 +35,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('success', 'Logout');
+        return redirect()->route('login')->with('success', 'Успішний вихід з акаунту!');
     }
 }

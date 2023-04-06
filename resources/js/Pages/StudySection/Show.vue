@@ -1,9 +1,9 @@
 <template>
     <MainLayout>
-        <div class="flex flex-col gap-4">
+        <div class="h-screen flex flex-col items-center gap-4">
             <div class="text-3xl text-center font-medium mt-4">{{studySection.title}}</div>
             <div class="text-xl text-center">{{studySection.content}}</div>
-            <Link as="button" class="test-button mx-auto"> Почати тестування!</Link>
+            <Link :href="route('testing', {id: studySection.id, question_id: 1})" as="button" class="signup-button w-fit"> Почати тестування!</Link>
         </div>
     </MainLayout>
 </template>

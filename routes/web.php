@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\UserAccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudySectionController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +34,11 @@ Route::get('logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::resource('study', StudySectionController::class);
 
-Route::get('user', [\App\Http\Controllers\UserAccountController::class, 'index'])->name('user');
+Route::get('user', [UserAccountController::class, 'index'])->name('user');
+
+Route::get('testing/{id}/{question_id}', [QuestionController::class, 'index'])->name('testing');
+Route::post('testing', [QuestionController::class, 'store'])->name('testing.store');
+
+Route::get('result/{study_section_id}', [QuestionController::class, 'result'])->name('result');
+
+Route::get('rating', [IndexController::class, 'rating'])->name('rating');
