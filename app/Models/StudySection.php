@@ -16,7 +16,7 @@ class StudySection extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_study_section')->withPivot('user_result');
+        return $this->belongsToMany(User::class, 'user_results')->withPivot('question_id', 'user_result');
     }
 
     public function questions() : HasMany {

@@ -45,7 +45,11 @@ body{
 }
 
 .input-radio{
-    @apply pl-1 hover:scale-110
+    @apply  hover:scale-110
+}
+
+.label-radio{
+    @apply text-2xl ml-2 text-center
 }
 
 .header-table-l{

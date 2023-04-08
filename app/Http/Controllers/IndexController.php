@@ -26,9 +26,9 @@ class IndexController extends Controller
         foreach ($users as $user) {
             $total = 0;
             $questions = 0;
-            foreach ($user->study_sections as $study_section)  {
-                $total += $study_section->pivot->user_result;
-                $questions += Question::where('study_section_id', $study_section->id)->count();
+            foreach ($user->userResults as $user_result)  {
+                $total += $user_result->pivot->user_result;
+                $questions += Question::where('study_section_id', $user_result->id)->count();
             }
             $users_results[$user->email] = $questions == 0 ? 0 : round(($total / $questions) * 100, 2);
         }

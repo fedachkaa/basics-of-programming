@@ -3,28 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudySection;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserAccountController extends Controller
 {
     public function index()
     {
-        $user_id = Auth::user()->id;
-        $user = User::where('id', $user_id)->first();
-        $study_sections = User::find($user_id)->study_sections()->get();
-
-        /*
-        foreach ($user->study_sections as $study_section) {
-            dd( $study_section->pivot->user_result);
-        }*/
+        $user = Auth::user();
+        $total = [];
+        for($i = 1; $i <= StudySection::all()->count(); $i++){
+            $title = StudySection::where('id', $i)->first()->title;
+            $res = Auth::user()->userResults()->where('study_section_id', $i)->sum('user_result');
+            $total[$i] = [$title => $res];
+        }
 
         return inertia(
             'UserAccount/Index',
             [
-                'user'=> $user,
-                'study_sections'=>$study_sections
+                'user' => $user,
+                'user_results' => $total
             ]
         );
     }
