@@ -22,6 +22,8 @@ class AuthController extends Controller
             throw ValidationException::withMessages([
                 'email' => 'Authentication failed'
             ]);
+        } else if(Auth::user()->is_admin){
+            return redirect()->route('admin')->with('success', 'Успішний вхід в акаунт!');
         }
         $request->session()->regenerate();
 

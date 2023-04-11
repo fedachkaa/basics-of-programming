@@ -10,6 +10,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudySectionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminStudySectionController;
+
 
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
@@ -23,7 +26,7 @@ Route::get('logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::resource('study', StudySectionController::class);
+    Route::resource('study', StudySectionController::class)->only(['index', 'show']);
 
     Route::get('user', [UserAccountController::class, 'index'])->name('user');
 
@@ -35,7 +38,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('notification', NotificationController::class)->only(['index', 'update', 'destroy']);
 });
 
-
+Route::prefix('admin')->middleware('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::resource('/study', AdminStudySectionController::class);
+});
 Route::get('rating', [IndexController::class, 'rating'])->name('rating');
 
 

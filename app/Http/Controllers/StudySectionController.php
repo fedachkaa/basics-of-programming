@@ -21,6 +21,7 @@ class StudySectionController extends Controller
         ]);
     }
 
+
     public function show($id){
         return inertia('StudySection/Show',
             [

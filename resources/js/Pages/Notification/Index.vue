@@ -11,7 +11,7 @@
                           v-if="!notification.read_at"
                           as="button"
                           method="PUT"
-                          class="mark-as-read-button">Прочитано</Link>
+                          class="edit-button">Прочитано</Link>
                     <Link :href="route('notification.destroy', {notification: notification.id})"
                           as="button"
                           method="DELETE"
