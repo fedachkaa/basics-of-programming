@@ -9,7 +9,13 @@
                     <Link :href="route('rating')" class="main-button">Рейтинг</Link>
                     <Link :href="route('study.index')" class="main-button">Навчатись</Link>
                     <div v-if="user" class="flex gap-2">
-                        <Link :href="route('user')" class="username"> {{user.name}}</Link>
+                        <Link :href="route('notification.index')" class="text-gray-500 relative pr-2 py-2 text-lg">
+                            🔔
+                            <div v-if="notification" class="absolute right-0 top-0 w-5 h-5 bg-red-700 dark:bg-red-400 text-white font-medium border border-white dark:border-gray-900 rounded-full text-xs text-center">
+                                {{notification}}
+                            </div>
+                        </Link>
+                            <Link :href="route('user')" class="username"> {{user.name}}</Link>
                         <Link :href="route('logout')" class="main-button">Вийти</Link>
                     </div>
                     <div v-else class="flex gap-2">
@@ -26,9 +32,6 @@
         </div>
         <slot></slot>
     </main>
-    <footer class="bg-black text-white grid justify-items-end font-medium gap-2 p-2">
-        <div>Ужгород, 2023</div>
-    </footer>
 </template>
 
 <script setup>
@@ -43,6 +46,11 @@ const  user = computed(() =>
 )
 const flashSuccess = computed(() =>
     page.props.flash.success
+)
+
+const notification = computed(
+    //() => Math.min(page.props.user.notification, 9),
+    () => page.props.user.notification
 )
 
 router.reload({ only: ['user', 'flashSuccess'] })

@@ -9,29 +9,16 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudySectionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\NotificationController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
-Route::get('register', [UserController::class, 'create'])
-    ->name('register');
-Route::post('register', [UserController::class, 'store'])
-    ->name('register.store');
+Route::get('register', [UserController::class, 'create'])->name('register');
+Route::post('register', [UserController::class, 'store'])->name('register.store');
 
-Route::get('login', [AuthController::class, 'create'])
-    ->name('login');
-Route::post('login', [AuthController::class, 'store'])
-    ->name('login.store');
+Route::get('login', [AuthController::class, 'create'])->name('login');
+Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::get('logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -44,13 +31,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('testing', [QuestionController::class, 'store'])->name('testing.store');
 
     Route::get('result/{study_section_id}', [QuestionController::class, 'result'])->name('result');
+
+    Route::resource('notification', NotificationController::class)->only(['index', 'update', 'destroy']);
 });
+
 
 Route::get('rating', [IndexController::class, 'rating'])->name('rating');
 
-Route::get('email/verify', function (){
-    return inertia('Auth/VerifyEmail');
-})->middleware('auth')->name('verification.notice');
 
 // VERIFICATION
 Route::get('email/verify', function (){

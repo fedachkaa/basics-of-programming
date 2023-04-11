@@ -19,6 +19,14 @@ body{
 .main-button{
     @apply transition duration-700 hover:bg-black hover:text-white hover:scale-110 text-lg font-medium border-2 rounded-full p-2 mx-2 border-black
 }
+
+.mark-as-read-button{
+    @apply transition duration-700 hover:bg-green-600 hover:border-green-600 hover:text-white hover:scale-110 text-lg font-medium border-2 rounded-full p-2 mx-2 border-black
+}
+
+.delete-button{
+    @apply transition duration-700 hover:bg-red-600 hover:border-red-600 hover:text-white hover:scale-110 text-lg font-medium border-2 rounded-full p-2 mx-2 border-black
+}
 .test-button{
     @apply hover:scale-110 px-4 py-2 rounded-full text-lg font-medium bg-teal-300 hover:bg-teal-400;
 }
@@ -26,7 +34,7 @@ body{
     @apply transition duration-700 hover:bg-black hover:text-white hover:scale-110 text-lg text-black font-medium border-2 rounded-full p-2 mx-2 border-black bg-white
 }
 .username {
-    @apply text-white hover:scale-110 text-lg font-medium border-2 rounded-full p-2 mx-2 border-deep-blue bg-deep-blue
+    @apply transition duration-700 text-white hover:scale-110 text-lg font-medium border-2 rounded-full p-2 mx-2 border-deep-blue bg-deep-blue
 }
 
 .main-form {
