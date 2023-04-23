@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use App\Models\StudySection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -75,13 +76,14 @@ class AdminStudySectionController extends Controller
             ]);
 
         return redirect()->route('study.index')->with('success', 'Тему змінено!');
-
     }
 
 
     public function destroy(string $id)
     {
+
         StudySection::where('id', $id)->delete();
+        Question::where('study_section_id', $id)->delete();
 
         return redirect()->route('study.index')->with('success', 'Тема успішно видалена!');
     }

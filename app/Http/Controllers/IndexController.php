@@ -12,6 +12,10 @@ class IndexController extends Controller
 {
     public function index()
     {
+        if (Auth::user() && Auth::user()->is_admin){
+            return redirect()->route('admin');
+        }
+
         $study_sections = StudySection::all()->pluck('title');
         return inertia('Index/Index',
         [
@@ -22,7 +26,7 @@ class IndexController extends Controller
     public function rating()
     {
         $users_results = [];
-        $users = User::all();
+        $users = User::where('is_admin', 0)->get();
         foreach ($users as $user) {
             $total = 0;
             $questions = 0;

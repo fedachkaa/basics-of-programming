@@ -67,6 +67,9 @@ body{
     @apply text-2xl ml-2 text-center
 }
 
+.header-table{
+    @apply  bg-opacity-80 my-1 p-2 text-center font-medium bg-deep-blue text-white text-xl
+}
 .header-table-l{
     @apply border bg-opacity-80 rounded rounded-r-none border-r-0 my-1 ml-2 p-2 text-center font-medium bg-deep-blue border-deep-blue text-white text-xl
 }
@@ -74,6 +77,9 @@ body{
     @apply border bg-opacity-80 rounded rounded-l-none border-l-0 my-1 mr-2 p-2 text-center font-medium bg-deep-blue border-deep-blue text-white text-xl
 }
 
+.item-table{
+    @apply border-2 border-l-0 border-r-0 my-1 p-2 text-center font-medium text-lg border-deep-blue
+}
 .item-table-l{
     @apply border-2 rounded rounded-r-none border-r-0 my-1 ml-2 p-2 text-center font-medium text-lg border-deep-blue
 }

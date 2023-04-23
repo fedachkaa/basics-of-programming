@@ -12,6 +12,10 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminStudySectionController;
+use App\Http\Controllers\AdminQuestionController;
+use App\Http\Controllers\AdminUserController;
+
+
 
 
 
@@ -41,7 +45,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::resource('/study', AdminStudySectionController::class);
+    Route::resource('/questions',  AdminQuestionController::class)->except('show');
+    Route::get('/users', [AdminUserController::class, 'users'])->name('admin.users');
+    Route::get('/admins', [AdminUserController::class, 'admins'])->name('admin.admins');
+
 });
+
 Route::get('rating', [IndexController::class, 'rating'])->name('rating');
 
 
