@@ -16,9 +16,6 @@ use App\Http\Controllers\AdminQuestionController;
 use App\Http\Controllers\AdminUserController;
 
 
-
-
-
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::get('register', [UserController::class, 'create'])->name('register');
@@ -29,23 +26,18 @@ Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::get('logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-
-    Route::resource('study', StudySectionController::class)->only(['index', 'show']);
-
     Route::get('user', [UserAccountController::class, 'index'])->name('user');
-
     Route::get('testing/{id}/{question_id}', [QuestionController::class, 'index'])->name('testing');
     Route::post('testing', [QuestionController::class, 'store'])->name('testing.store');
-
     Route::get('result/{study_section_id}', [QuestionController::class, 'result'])->name('result');
-
+    Route::resource('study', StudySectionController::class)->only(['index', 'show']);
     Route::resource('notification', NotificationController::class)->only(['index', 'update', 'destroy']);
 });
 
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::resource('/study', AdminStudySectionController::class);
-    Route::resource('/questions',  AdminQuestionController::class)->except('show');
+    Route::resource('/admin-study', AdminStudySectionController::class);
+    Route::resource('/questions',  AdminQuestionController::class);
     Route::get('/users', [AdminUserController::class, 'users'])->name('admin.users');
     Route::get('/admins', [AdminUserController::class, 'admins'])->name('admin.admins');
 

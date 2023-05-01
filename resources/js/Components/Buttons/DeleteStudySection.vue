@@ -1,5 +1,5 @@
 <template>
-<Link :href="route('study.destroy', {study: studySection.id})"
+<Link :href="route('admin-study.destroy', {admin_study: studySection.id})"
       as="button"
       method="DELETE"
       class="delete-button">Видалити</Link>

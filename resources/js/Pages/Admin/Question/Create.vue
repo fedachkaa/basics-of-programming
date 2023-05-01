@@ -1,75 +1,16 @@
 <template>
     <AdminLayout title="Питання">
         <div class="h-screen flex justify-center">
-            <form @submit.prevent="store" class="">
+            <form @submit.prevent="store">
                 <label class="label font-md text-4xl">Створення питання</label>
-
-                <div>
-                    <label for="study_section" class="label">Тема</label>
-                    <select id="study_section" v-model="form.study_section_id">
-                        <option v-for="studySection in studySections" v-bind:value="studySection.id">{{studySection.title}}</option>
-                    </select>
-                </div>
-
-                <div class="">
-                    <label for="question" class="label">Питання</label>
-                    <input id="question" v-model="form.question" type="text"
-                           class="input"/>
-                    <div v-if="form.errors.question" class="input-error">
-                        {{form.errors.question }}
-                    </div>
-                </div>
-
-                <div class="">
-                    <label for="variant_1" class="label">Варіант відповіді №1</label>
-                    <textarea id="variant_1" v-model="form.variant_1"
-                              type="textarea" class="input"/>
-                    <div v-if="form.errors.variant_1" class="input-error">
-                        {{ form.errors.variant_1 }}
-                    </div>
-                </div>
-
-                <div class="">
-                    <label for="variant_2" class="label">Варіант відповіді №2</label>
-                    <textarea id="variant_2" v-model="form.variant_2"
-                              type="textarea" class="input"/>
-                    <div v-if="form.errors.variant_2" class="input-error">
-                        {{ form.errors.variant_2 }}
-                    </div>
-                </div>
-
-                <div class="">
-                    <label for="variant_3" class="label">Варіант відповіді №3</label>
-                    <textarea id="variant_3" v-model="form.variant_3"
-                              type="textarea" class="input"/>
-                    <div v-if="form.errors.variant_3" class="input-error">
-                        {{ form.errors.variant_3 }}
-                    </div>
-                </div>
-
-                <div class="">
-                    <label for="variant_4" class="label">Варіант відповіді №4</label>
-                    <textarea id="variant_4" v-model="form.variant_4"
-                              type="textarea" class="input"/>
-                    <div v-if="form.errors.variant_4" class="input-error">
-                        {{ form.errors.variant_4 }}
-                    </div>
-                </div>
-
-                <div class="">
-                    <label for="answer" class="label">Правильний варіант відповіді</label>
-                    <textarea id="answer" v-model="form.answer"
-                              type="textarea" class="input"/>
-                    <div v-if="form.errors.answer" class="input-error">
-                        {{ form.errors.answer }}
-                    </div>
-                </div>
-
-                <div class="mt-4 py-3 w-1/2 mx-auto text-center">
-                    <button class="edit-button" type="submit">
-                        Створити!
-                    </button>
-                </div>
+                <SelectStudySection :form="form" :studySections="studySections"/>
+                <Question :form="form"/>
+                <Variant1 :form="form"/>
+                <Variant2 :form="form"/>
+                <Variant3 :form="form"/>
+                <Variant4 :form="form"/>
+                <Answer :form="form"/>
+                <FormButton text="Створити"/>
             </form>
         </div>
     </AdminLayout>
@@ -77,8 +18,18 @@
 
 <script setup>
 import { useForm } from '@inertiajs/vue3'
-import AdminLayout from "@/Layouts/AdminLayout.vue";
 import {defineProps} from "vue";
+
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+import Question from "@/Components/Form/Question/Question.vue";
+import Variant1 from "@/Components/Form/Question/Variant1.vue";
+import Variant2 from "@/Components/Form/Question/Variant2.vue";
+import Variant3 from "@/Components/Form/Question/Variant3.vue";
+import Variant4 from "@/Components/Form/Question/Variant4.vue";
+import Answer from "@/Components/Form/Question/Answer.vue";
+import FormButton from "@/Components/Form/FormButton.vue";
+import SelectStudySection from "@/Components/Form/Question/SelectStudySection.vue";
+
 
 defineProps({
     studySections: Array

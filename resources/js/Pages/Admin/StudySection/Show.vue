@@ -15,10 +15,9 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3'
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import EditStudySection from "@/Components/EditStudySection.vue";
-import DeleteStudySection from "@/Components/DeleteStudySection.vue";
+import EditStudySection from "@/Components/Buttons/EditStudySection.vue";
+import DeleteStudySection from "@/Components/Buttons/DeleteStudySection.vue";
 
 const props = defineProps({
     studySection: Object,

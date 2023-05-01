@@ -43,4 +43,8 @@ class IndexController extends Controller
         ]);
     }
 
+    public function temp(){
+        return inertia('Temp');
+    }
+
 }

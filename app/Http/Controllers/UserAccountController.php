@@ -11,11 +11,14 @@ class UserAccountController extends Controller
     {
         $user = Auth::user();
         $total = [];
-        for($i = 1; $i <= StudySection::all()->count(); $i++){
-            $title = StudySection::where('id', $i)->first()->title;
-            $res = Auth::user()->userResults()->where('study_section_id', $i)->sum('user_result');
-            $total[$i] = [$title => $res];
+        $study_sections = StudySection::all();
+        foreach ($study_sections as $study_section) {
+            $title = $study_section->title;
+            $id = $study_section->id;
+            $res = Auth::user()->userResults()->where('study_section_id', $id)->sum('user_result');
+            $total[$id] = [$title => $res];
         }
+
 
         return inertia(
             'UserAccount/Index',

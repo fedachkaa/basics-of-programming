@@ -32,7 +32,6 @@
 
 <script setup>
 import MainLayout from "@/Layouts/MainLayout.vue";
-import Box from '@/Components/Box.vue'
 import { Link  } from '@inertiajs/vue3'
 
 defineProps({

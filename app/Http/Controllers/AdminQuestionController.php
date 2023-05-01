@@ -9,12 +9,11 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminQuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function index($id = 1)
     {
-        $questions = Question::all();
+        $questions = Question::where('study_section_id', $id)->get();
+
         foreach ($questions as $item){
             $id = $item->study_section_id;
             $item->study_section_id = StudySection::where('id', $id)->first()->title;
@@ -22,12 +21,11 @@ class AdminQuestionController extends Controller
 
         return inertia('Admin/Question/Index', [
             'questions' => $questions,
+            'studySections'=>StudySection::all()
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return inertia('Admin/Question/Create', [
@@ -35,9 +33,7 @@ class AdminQuestionController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         Question::create( $request->validate([
@@ -55,9 +51,6 @@ class AdminQuestionController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $question = Question::where('id', $id)->first();
@@ -68,9 +61,7 @@ class AdminQuestionController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
@@ -106,9 +97,7 @@ class AdminQuestionController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         Question::where('id', $id)->delete();

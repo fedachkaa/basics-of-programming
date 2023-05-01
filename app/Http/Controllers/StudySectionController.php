@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 class StudySectionController extends Controller
 {
+    /*
     public function __construct()
     {
 
         $this->middleware('auth');
     }
+    */
 
     public function index()
     {
@@ -25,7 +27,8 @@ class StudySectionController extends Controller
     public function show($id){
         return inertia('StudySection/Show',
             [
-                'studySection' => StudySection::where('id', $id)->first()
+                'studySection' => StudySection::where('id', $id)->first(),
+                'content'=>nl2br(StudySection::where('id', $id)->first()->content),
             ]);
 
     }

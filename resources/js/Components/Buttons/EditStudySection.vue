@@ -1,5 +1,5 @@
 <template>
-    <Link :href="route('study.edit', {study: studySection.id})"
+    <Link :href="route('admin-study.edit', {admin_study: studySection.id})"
           as="button"
           method="GET"
           class="edit-button">Змінити</Link>

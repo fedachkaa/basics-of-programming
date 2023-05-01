@@ -5,8 +5,8 @@
 
         <div class="border-b-2 p-2 ">
             <div class="text-xl font-bold m-2">Теми</div>
-            <Link :href="route('study.index')" as="button" class="main-button">Переглянути теми</Link>
-            <Link :href="route('study.create')" as="button" class="main-button">Створити тему</Link>
+            <Link :href="route('admin-study.index')" as="button" class="main-button">Переглянути теми</Link>
+            <Link :href="route('admin-study.create')" as="button" class="main-button">Створити тему</Link>
         </div>
 
         <div class="border-b-2 p-2">
