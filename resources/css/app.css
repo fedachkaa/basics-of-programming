@@ -5,6 +5,13 @@
 body{
     @apply bg-white mb-0;
 }
+ul {
+    @apply list-disc
+}
+
+ol {
+    @apply list-decimal
+}
 .header {
     @apply w-full mx-0;
 }

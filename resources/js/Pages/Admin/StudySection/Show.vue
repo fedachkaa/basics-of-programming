@@ -4,7 +4,7 @@
             <div class="justify-self-center text-lg font-bold">Назва:</div>
             <div class="col-span-2 justify-self-start">{{studySection.title}}</div>
             <div class="justify-self-center text-lg font-bold">Наповнення:</div>
-            <div class="col-span-2 justify-self-start">{{studySection.content}}</div>
+            <div class="col-span-2 justify-self-start" v-html="studySection.content"/>
         </div>
         <div class="text-center m-4">
             <EditStudySection :studySection="studySection"/>

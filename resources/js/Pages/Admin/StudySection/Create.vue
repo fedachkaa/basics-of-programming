@@ -3,8 +3,8 @@
         <div class="h-screen flex justify-center">
             <form @submit.prevent="store" class="">
                 <label class="label font-md text-4xl">Створення теми</label>
-                <Title :form="form"></Title>
-                <Content :form="form"></Content>
+                <Title :form="form"/>
+                <Content :form="form"/>
                 <FormButton text="Створити!"/>
             </form>
         </div>
@@ -22,6 +22,7 @@ const form = useForm({
     title: null,
     content: null
 })
-const store = () => form.post(route('study.store'))
+
+const store = () => form.post(route('admin-study.store'))
 
 </script>

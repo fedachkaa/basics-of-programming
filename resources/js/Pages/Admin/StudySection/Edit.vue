@@ -25,6 +25,6 @@ const form = useForm({
     title: props.studySection.title,
     content: props.studySection.content
 })
-const update = () => form.put(route('study.update', {study: props.studySection.id}))
+const update = () => form.put(route('admin-study.update', {admin_study: props.studySection.id}))
 
 </script>
