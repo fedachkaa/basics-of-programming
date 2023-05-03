@@ -31,7 +31,7 @@ class AdminStudySectionController extends Controller
             'content'=>'required',
         ]));
 
-        return redirect()->route('study.index')->with('success', 'Тему створено!');
+        return redirect()->route('admin-study.index')->with('success', 'Тему створено!');
 
     }
 
@@ -62,7 +62,7 @@ class AdminStudySectionController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('study.edit', $id)
+            return redirect()->route('admin-study.edit', $id)
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -75,7 +75,7 @@ class AdminStudySectionController extends Controller
                 'content'=> $validated['content']
             ]);
 
-        return redirect()->route('study.index')->with('success', 'Тему змінено!');
+        return redirect()->route('admin-study.index')->with('success', 'Тему змінено!');
     }
 
 
@@ -85,6 +85,6 @@ class AdminStudySectionController extends Controller
         StudySection::where('id', $id)->delete();
         Question::where('study_section_id', $id)->delete();
 
-        return redirect()->route('study.index')->with('success', 'Тема успішно видалена!');
+        return redirect()->route('admin-study.index')->with('success', 'Тема успішно видалена!');
     }
 }

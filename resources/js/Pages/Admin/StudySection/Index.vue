@@ -1,35 +1,25 @@
 <template>
     <AdminLayout title="Теми">
-        <div class="h-screen">
 
             <div class="text-center">
                 <Link :href="route('admin-study.create')" as="button" class="create-button mb-10">Створити тему</Link>
             </div>
 
-            <div class="grid grid-cols-2 border-b-2"  v-for="studySection in studySections" :key="studySection.id" :studySection="studySection">
-
-                <div class="admin-study-section justify-self-end">
-                    <Link :href="route('admin-study.show', {admin_study: studySection.id})">
-                        <div class="text-xl font-medium">{{studySection.title}}</div>
+            <div class="grid grid-cols-2 gap-5 m-3 place-items-center">
+                <div v-for="studySection in studySections" :key="studySection.id" :studySection="studySection">
+                    <Link :href="route('admin-study.show', {admin_study: studySection.id})" class="hover:cursor-pointer">
+                        <StudySectionBox :studySection="studySection" class="box"/>
                     </Link>
                 </div>
-
-                <div class="my-auto justify-self-start">
-                    <EditStudySection :studySection="studySection"/>
-                    <DeleteStudySection :studySection="studySection"/>
-                </div>
-
-
             </div>
-        </div>
+
     </AdminLayout>
 </template>
 
 <script setup>
 import { Link  } from '@inertiajs/vue3'
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import EditStudySection from "@/Components/Buttons/EditStudySection.vue";
-import DeleteStudySection from "@/Components/Buttons/DeleteStudySection.vue";
+import StudySectionBox from "@/Components/Boxes/StudySectionBox.vue";
 
 defineProps({
     studySections: Array,

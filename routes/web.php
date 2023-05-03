@@ -14,6 +14,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminStudySectionController;
 use App\Http\Controllers\AdminQuestionController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\ImageController;
+
 
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
@@ -24,6 +26,8 @@ Route::post('register', [UserController::class, 'store'])->name('register.store'
 Route::get('login', [AuthController::class, 'create'])->name('login');
 Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::get('logout', [AuthController::class, 'destroy'])->name('logout');
+
+Route::get('rating', [IndexController::class, 'rating'])->name('rating');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('user', [UserAccountController::class, 'index'])->name('user');
@@ -40,10 +44,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::resource('/questions',  AdminQuestionController::class);
     Route::get('/users', [AdminUserController::class, 'users'])->name('admin.users');
     Route::get('/admins', [AdminUserController::class, 'admins'])->name('admin.admins');
+    Route::post('/upload-image', [ImageController::class, 'uploadImage'])->name('upload.image');
 
 });
-
-Route::get('rating', [IndexController::class, 'rating'])->name('rating');
 
 
 // VERIFICATION

@@ -1,11 +1,13 @@
 <template>
     <AdminLayout title="Теми">
-        <div class="grid grid-cols-3 gap-2">
-            <div class="justify-self-center text-lg font-bold">Назва:</div>
-            <div class="col-span-2 justify-self-start">{{studySection.title}}</div>
-            <div class="justify-self-center text-lg font-bold">Наповнення:</div>
-            <div class="col-span-2 justify-self-start" v-html="studySection.content"/>
+        <div class="border-2 m-5 border-deep-blue">
+            <div class="text-3xl text-center font-medium mt-4">{{studySection.title}}</div>
+
+            <div class="m-10">
+                <div class="text-xl text-center" v-html="studySection.content"/>
+            </div>
         </div>
+
         <div class="text-center m-4">
             <EditStudySection :studySection="studySection"/>
             <DeleteStudySection :studySection="studySection"/>

@@ -4,48 +4,38 @@
             <Link :href="route('questions.create')" as="button" class="create-button mb-10">Створити питання</Link>
         </div>
 
-        <table class="w-full text-center">
-            <thead>
-            <tr>
-                <th class="border border-slate-300 ">Тема</th>
-                <th class="border border-slate-300 ">Питання</th>
-                <th class="border border-slate-300 ">Варіант 1</th>
-                <th class="border border-slate-300 ">Варіант 2</th>
-                <th class="border border-slate-300 ">Варіант 3 </th>
-                <th class="border border-slate-300 ">Варіант 4</th>
-                <th class="border border-slate-300">Правильна відповідь</th>
-                <th class=""></th>
-                <th class=""></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="question in questions" :key="question.id" :question="question">
-                <td class="border border-slate-300">{{question.study_section_id}}</td>
-                <td class="border border-slate-300">{{question.question}}</td>
-                <td class="border border-slate-300">{{question.variant_1}}</td>
-                <td class="border border-slate-300">{{question.variant_2}}</td>
-                <td class="border border-slate-300">{{question.variant_3}}</td>
-                <td class="border border-slate-300">{{question.variant_4}}</td>
-                <td class="border border-slate-300">{{question.answer}}</td>
-                <td class=""><EditQuestion :question="question"/></td>
-                <td class=""><DeleteQuestion :question="question"/></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="text-center text-lg">
+            <label for="study_section" class="label">Виберіть тему:</label>
+            <select v-model="selectedStudySection" class="select-study-section">
+                <option v-for="studySection in studySections" :key="studySection.id" :value="studySection">{{studySection.title}}</option>
+            </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-5 m-3 place-items-center">
+            <div v-for="question in questions" :key="question.id" :question="question">
+                <div v-if="selectedStudySection.title === question.study_section_id">
+                    <QuestionBox :question="question" class="box"/>
+                </div>
+            </div>
+        </div>
+
+
     </AdminLayout>
 
 </template>
 
 <script setup>
 import {Link} from '@inertiajs/vue3'
+import { ref } from 'vue'
+
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import DeleteQuestion from "@/Components/Buttons/DeleteQuestion.vue";
-import EditQuestion from "@/Components/Buttons/EditQuestion.vue";
+import QuestionBox from "@/Components/Boxes/QuestionBox.vue";
+
+const selectedStudySection = ref(props.studySections[0]);
 
 const props = defineProps({
     questions: Array,
     studySections: Array
 })
-
 
 </script>

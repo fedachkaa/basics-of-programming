@@ -8,10 +8,14 @@ body{
 ul {
     @apply list-disc
 }
-
 ol {
     @apply list-decimal
 }
+img {
+    @apply mx-auto rounded-md
+}
+
+
 .header {
     @apply w-full mx-0;
 }
@@ -96,4 +100,11 @@ ol {
 
 .flash-success{
     @apply w-1/2 mx-auto text-center m-4 border rounded-full border-green-200 bg-green-50 p-2
+}
+
+.box {
+    @apply border-2 border-deep-blue p-3 rounded-md shadow-deep-blue shadow-md hover:shadow-black select-none
+}
+.select-study-section {
+    @apply rounded-md border-deep-blue border-2 text-center
 }
