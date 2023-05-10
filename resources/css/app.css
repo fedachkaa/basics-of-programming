@@ -75,7 +75,7 @@ img {
 }
 
 .label-radio{
-    @apply text-2xl ml-2 text-center
+    @apply text-xl ml-2 text-center
 }
 
 .header-table{

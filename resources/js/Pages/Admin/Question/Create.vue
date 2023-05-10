@@ -32,7 +32,7 @@ import SelectStudySection from "@/Components/Form/Question/SelectStudySection.vu
 
 
 defineProps({
-    studySections: Array
+    studySections: Array,
 })
 const form = useForm({
     study_section_id: null,

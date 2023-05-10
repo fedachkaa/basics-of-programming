@@ -20,13 +20,16 @@ class AdminStudySectionController extends Controller
 
     public function create()
     {
-        return inertia('Admin/StudySection/Create');
+        return inertia('Admin/StudySection/Create', [
+            'count'=>StudySection::all()->count(),
+        ]);
     }
 
 
     public function store(Request $request)
     {
         StudySection::create( $request->validate([
+            'id'=>'required',
             'title'=>'required',
             'content'=>'required',
         ]));

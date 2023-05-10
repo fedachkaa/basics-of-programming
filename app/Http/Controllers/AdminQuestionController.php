@@ -10,14 +10,10 @@ use Illuminate\Support\Facades\Validator;
 class AdminQuestionController extends Controller
 {
 
-    public function index($id = 1)
+    public function index()
     {
-        $questions = Question::where('study_section_id', $id)->get();
+        $questions = Question::all();
 
-        foreach ($questions as $item){
-            $id = $item->study_section_id;
-            $item->study_section_id = StudySection::where('id', $id)->first()->title;
-        }
 
         return inertia('Admin/Question/Index', [
             'questions' => $questions,
@@ -36,7 +32,12 @@ class AdminQuestionController extends Controller
 
     public function store(Request $request)
     {
-        Question::create( $request->validate([
+        $count = Question::where('study_section_id', $request['study_section_id'])->count();
+
+        $question = new Question;
+        $question->id = $count + 1;
+        $question->fill(
+            $request->validate([
             'study_section_id'=>'required',
             'question'=>'required|string',
             'variant_1'=>'required',
@@ -46,8 +47,8 @@ class AdminQuestionController extends Controller
             'answer'=>'required',
         ]));
 
+        $question->save();
         return redirect()->route('questions.index')->with('success', 'Питання створено!');
-
     }
 
 

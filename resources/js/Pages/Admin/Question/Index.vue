@@ -12,8 +12,8 @@
         </div>
 
         <div class="grid grid-cols-2 gap-5 m-3 place-items-center">
-            <div v-for="question in questions" :key="question.id" :question="question">
-                <div v-if="selectedStudySection.title === question.study_section_id">
+            <div v-for="question in selectedQuestions()" :key="question.id" :question="question">
+                <div v-if="selectedStudySection.id === question.study_section_id">
                     <QuestionBox :question="question" class="box"/>
                 </div>
             </div>
@@ -31,11 +31,21 @@ import { ref } from 'vue'
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import QuestionBox from "@/Components/Boxes/QuestionBox.vue";
 
-const selectedStudySection = ref(props.studySections[0]);
 
 const props = defineProps({
     questions: Array,
     studySections: Array
 })
 
+const selectedStudySection = ref(props.studySections[0]);
+
+const selectedQuestions = () => {
+    let selectedQuestionsArr = [];
+    for (let i = 0; i < props.questions.length; i++){
+        if (props.questions[i].study_section_id === selectedStudySection.value.id) {
+            selectedQuestionsArr.push(props.questions[i]);
+        }
+    }
+    return selectedQuestionsArr;
+}
 </script>

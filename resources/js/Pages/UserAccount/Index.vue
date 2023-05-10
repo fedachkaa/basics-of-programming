@@ -17,14 +17,15 @@
                 </div>
             </div>
 
-            <div class="text-center text-3xl font-medium my-5">Прогрес</div>
-            <div class="grid grid-cols-2 gap-3 justify-items-center text-center">
-                <div v-for="(item, index) in user_results" v-bind:key="index">
-                    <div v-for="(item1, index1) in item" v-bind:key="index1">
-                        <div class="text-xl">Тема {{ index }}. {{ index1 }}</div>
-                        <div class="bg-deep-blue w-fit mx-auto rounded-md text-white text-xl p-1 m-2">Результат: {{ item1 }}</div>
+            <div v-if="user.is_admin !== 1">
+                <div class="text-center text-3xl font-medium my-5">Прогрес</div>
+
+                <div class="grid grid-cols-3 gap-5 justify-items-center text-center m-2">
+                    <div v-for="(item, index) in user_results" v-bind:key="index" class="box w-full">
+                        <UserResultBox :user_result="item" :id="index"/>
                     </div>
                 </div>
+
             </div>
         </div>
     </MainLayout>
@@ -32,7 +33,7 @@
 
 <script setup>
 import MainLayout from "@/Layouts/MainLayout.vue";
-import { Link  } from '@inertiajs/vue3'
+import UserResultBox from "@/Components/Boxes/UserResultBox.vue";
 
 defineProps({
     user: Object,

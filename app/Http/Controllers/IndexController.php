@@ -42,9 +42,4 @@ class IndexController extends Controller
             'users_results'=> $users_results
         ]);
     }
-
-    public function temp(){
-        return inertia('Temp');
-    }
-
 }

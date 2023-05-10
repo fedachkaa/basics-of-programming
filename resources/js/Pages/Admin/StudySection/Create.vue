@@ -18,7 +18,12 @@ import Title from "@/Components/Form/StudySection/Title.vue";
 import Content from "@/Components/Form/StudySection/Content.vue";
 import FormButton from "@/Components/Form/FormButton.vue";
 
+const props = defineProps({
+    count: Number
+})
+
 const form = useForm({
+    id: props.count + 1,
     title: null,
     content: null
 })

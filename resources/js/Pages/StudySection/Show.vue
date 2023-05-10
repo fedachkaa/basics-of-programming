@@ -7,7 +7,7 @@
                 <div class="text-xl text-center" v-html="content"/>
             </div>
 
-            <Link :href="route('testing', {id: studySection.id, question_id: 1})" as="button" class="signup-button w-fit"> Почати тестування!</Link>
+            <Link :href="route('testing', {id: studySection.id})" as="button" class="signup-button w-fit"> Почати тестування!</Link>
         </div>
     </MainLayout>
 </template>

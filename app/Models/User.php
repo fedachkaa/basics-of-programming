@@ -57,4 +57,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(StudySection::class, 'user_results')->withPivot('question_id', 'user_result');
     }
+
+
+    public function scopeIsResultExists($query, $studySectionId, $question_id)
+    {
+        return $query->join('user_results', 'users.id', '=', 'user_results.user_id')
+            ->where('users.id', auth()->id())
+            ->where('user_results.study_section_id', $studySectionId)
+            ->where('user_results.question_id', $question_id)
+            ->exists();
+    }
+
 }
