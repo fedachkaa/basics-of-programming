@@ -26,7 +26,7 @@ class UserController extends Controller
         Auth::login($user);
         event(new Registered($user));
 
-        return redirect()->route('home')->with('success', 'Реєстрація пройшла успішно!');
+        return redirect()->route('home')->with('success', 'Майже готово! Щоб завершити процес реєстрації та активувати ваш обліковий запис, ми просимо вас підтвердити свою електронну пошту. Лист підтвердження вже надіслано.');
     }
 
     public function destroy()

@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Notifications\StudySectionPassed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Ramsey\Uuid\Type\Integer;
 
 class QuestionController extends Controller
 {
@@ -45,23 +44,19 @@ class QuestionController extends Controller
             }
         }
 
+        $result = $this->count_result($study_section_id);
+        $study_section = StudySection::where('id', $study_section_id)->first();
+        Auth::user()->notify(new StudySectionPassed($study_section, array_sum(array_values($result)), count($result)));
+
         return redirect()->route('result', ['id' => $study_section_id]);
     }
 
 
 
     public function result($study_section_id){
-        $user_result = Auth::user()->userResults()->where('study_section_id', $study_section_id)->get();
-        $result = [];
-        foreach ($user_result as $res){
-            $result[$res->pivot->question_id] = $res->pivot->user_result;
-        }
+        $result = $this->count_result($study_section_id);
         $total = array_sum(array_values($result));
 
-        /*
-        $study_section = StudySection::where('id', $study_section_id)->first();
-        Auth::user()->notify(new StudySectionPassed($study_section));
-        */
         return inertia('Question/Result',
             [
                 'result' => $result,
@@ -69,6 +64,12 @@ class QuestionController extends Controller
             ]);
     }
 
-
-
+     private function count_result($study_section_id){
+        $user_result = Auth::user()->userResults()->where('study_section_id', $study_section_id)->get();
+        $result = [];
+        foreach ($user_result as $res){
+            $result[$res->pivot->question_id] = $res->pivot->user_result;
+        }
+        return $result;
+    }
 }

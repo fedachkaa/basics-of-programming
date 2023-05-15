@@ -4,7 +4,6 @@ namespace App\Notifications;
 
 use App\Models\StudySection;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -15,7 +14,7 @@ class StudySectionPassed extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct(private StudySection $studySection)
+    public function __construct(private StudySection $studySection, private int $result, private int $count)
     {
         //
     }
@@ -51,6 +50,8 @@ class StudySectionPassed extends Notification
         return [
             'study_section_id'=> $this->studySection->id,
             'study_section_title'=> $this->studySection->title,
+            'result'=>$this->result,
+            'count'=>$this->count
         ];
     }
 }

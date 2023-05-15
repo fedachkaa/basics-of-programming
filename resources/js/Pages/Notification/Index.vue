@@ -4,7 +4,13 @@
         <section v-if="notifications.data.length" class="text-xl">
             <div class="border-b border-deep-blue py-4 flex justify-between items-center" v-for="notification in notifications.data" :key="notification.id">
                 <span v-if="notification.type==='App\\Notifications\\StudySectionPassed'" class="p-2">
-                    Ви пройшли тему <strong>"{{notification.data.study_section_title}}"</strong>!
+                    Ви пройшли тему <strong>"{{notification.data.study_section_title}}"</strong>! <br>
+                    <div v-if="notification.data.result * 2 < notification.data.count " class="text-red-500">
+                        Результат: {{ notification.data.result }} / {{ notification.data.count}}.
+                    </div>
+                    <div v-else class="text-green-500">
+                        Результат: {{ notification.data.result }} / {{ notification.data.count}}.
+                    </div>
                 </span>
                 <div class="flex justify-end">
                     <Link :href="route('notification.update', {notification: notification.id})"

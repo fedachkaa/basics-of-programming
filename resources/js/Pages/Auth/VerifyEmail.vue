@@ -1,9 +1,11 @@
 <template>
     <MainLayout>
         <div>
-            <div>Щоб бачити цю сторінку, необхідно пітвердити електронну пошту!</div>
-            <div>
-                <Link :href="route('verification.send')" method="POST" as="button" class="main-button">Надіслати лист для підтвердження</Link>
+            <div class="text-center">
+                <div class="m-3 text-xl">Щоб бачити цю сторінку, необхідно пітвердити електронну пошту!</div>
+                <div>
+                    <Link :href="route('verification.send')" method="POST" as="button" class="main-button">Надіслати лист для підтвердження</Link>
+                </div>
             </div>
         </div>
     </MainLayout>

@@ -45,7 +45,6 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/users', [AdminUserController::class, 'users'])->name('admin.users');
     Route::get('/admins', [AdminUserController::class, 'admins'])->name('admin.admins');
     Route::post('/upload-image', [ImageController::class, 'uploadImage'])->name('upload.image');
-
 });
 
 
