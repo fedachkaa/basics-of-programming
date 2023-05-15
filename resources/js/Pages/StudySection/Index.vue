@@ -1,6 +1,6 @@
 <template>
     <MainLayout>
-        <div class="h-screen">
+        <div>
             <div class="text-3xl text-center p-3">Теми:</div>
             <div class="grid grid-cols-1" >
                 <div class="study-section" v-for="studySection in studySections" :key="studySection.id" :studySection="studySection">

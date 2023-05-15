@@ -12,14 +12,12 @@
         </div>
 
         <div class="grid grid-cols-2 gap-5 m-3 place-items-center">
-            <div v-for="question in selectedQuestions()" :key="question.id" :question="question">
-                <div v-if="selectedStudySection.id === question.study_section_id">
+            <div v-for="question in selectedQuestions()" :key="question.id" :question="question" class="w-full">
+                <div v-if="selectedStudySection.id === question.study_section_id" class="h-full">
                     <QuestionBox :question="question" class="box"/>
                 </div>
             </div>
         </div>
-
-
     </AdminLayout>
 
 </template>

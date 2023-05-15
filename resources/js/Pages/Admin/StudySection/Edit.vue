@@ -1,7 +1,7 @@
 <template>
     <AdminLayout title="Теми">
-        <div class="h-screen flex justify-center">
-            <form @submit.prevent="update" class="">
+        <div class="flex justify-center">
+            <form @submit.prevent="update">
                 <label class="label font-md text-4xl">Редагування теми</label>
                 <Title :form="form"/>
                 <Content :form="form"/>

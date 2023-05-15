@@ -1,6 +1,6 @@
 <template>
     <AdminLayout title="Питання">
-        <div class="h-screen flex justify-center">
+        <div class="flex justify-center">
             <form @submit.prevent="update" class="">
                 <label class="label font-md text-4xl">Редагування питання</label>
                 <SelectStudySection :form="form" :studySections="studySections"/>

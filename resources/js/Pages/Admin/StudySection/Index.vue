@@ -1,18 +1,16 @@
 <template>
     <AdminLayout title="Теми">
-
             <div class="text-center">
                 <Link :href="route('admin-study.create')" as="button" class="create-button mb-10">Створити тему</Link>
             </div>
 
             <div class="grid grid-cols-2 gap-5 m-3 place-items-center">
-                <div v-for="studySection in studySections" :key="studySection.id" :studySection="studySection">
-                    <Link :href="route('admin-study.show', {admin_study: studySection.id})" class="hover:cursor-pointer">
+                <div v-for="studySection in studySections" :key="studySection.id" :studySection="studySection" class="w-full">
+                    <Link :href="route('admin-study.show', {admin_study: studySection.id})" class="hover:cursor-pointer h-full">
                         <StudySectionBox :studySection="studySection" class="box"/>
                     </Link>
                 </div>
             </div>
-
     </AdminLayout>
 </template>
 

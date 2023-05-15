@@ -1,6 +1,6 @@
 <template>
     <AdminLayout title="Теми">
-        <div class="h-screen flex justify-center">
+        <div class="flex justify-center">
             <form @submit.prevent="store" class="">
                 <label class="label font-md text-4xl">Створення теми</label>
                 <Title :form="form"/>

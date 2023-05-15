@@ -5,7 +5,9 @@
             <h1 class="text-7xl font-bold text-deep-blue"> Basics of programming!</h1>
             <div>
                 <a href="#section1">
-                    <svg class="mt-20 mx-auto animate-bounce w-12 h-12 text-deep-blue border-2 rounded-full border-deep-blue" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg
+                        class="mt-20 mx-auto animate-bounce w-12 h-12 text-deep-blue border-2 rounded-full border-deep-blue"
+                        stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                     </svg>
                 </a>
@@ -16,26 +18,27 @@
             <h1 class="text-7xl font-bold text-center"> Що входить в навчальну програму?</h1>
             <div class="mt-10">
                 <div v-for="studySection in studySections" :key="studySection.id" :studySection="studySection">
-                    <div class="study-section"> {{studySection}}</div>
+                    <div class="study-section"> {{ studySection }}</div>
                 </div>
             </div>
             <div>
                 <a href="#section2">
-                    <svg class="mx-auto animate-bounce w-12 h-12 text-deep-blue border-2 rounded-full border-deep-blue" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="mx-auto animate-bounce w-12 h-12 text-deep-blue border-2 rounded-full border-deep-blue"
+                         stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                     </svg>
                 </a>
             </div>
         </div>
 
-        <div id="section2" class="h-screen flex flex-col place-content-center gap-3">
+        <div id="section2" class="min-h-screen flex flex-col place-content-center gap-3">
             <h1 class="text-7xl font-bold text-center"> Щоб почати навчання - увійди або зареєструйся!</h1>
             <div class="flex flex-row justify-center gap-5 mt-20">
-                <div>
-                    <Link :href="route('register')" class="main-button">Зареєструватись</Link>
+                <div class="main-button">
+                    <Link :href="route('register')">Зареєструватись</Link>
                 </div>
-                <div>
-                    <Link :href="route('login')" class="main-button">Увійти</Link>
+                <div class="main-button">
+                    <Link :href="route('login')">Увійти</Link>
                 </div>
             </div>
 
@@ -45,7 +48,7 @@
 
 <script setup>
 import MainLayout from "@/Layouts/MainLayout.vue";
-import { Link } from '@inertiajs/vue3'
+import {Link} from '@inertiajs/vue3'
 
 const props = defineProps({
     studySections: Array,

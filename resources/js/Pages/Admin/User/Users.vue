@@ -1,6 +1,6 @@
 <template>
     <AdminLayout>
-        <div class="h-screen">
+        <div>
             <div class="text-3xl font-medium text-center m-5">Користувачі</div>
 
             <div class="grid grid-cols-4 gap-5 place-items-center">
@@ -8,7 +8,6 @@
                     <UserBox :user="user" class="box"/>
                 </div>
             </div>
-
         </div>
     </AdminLayout>
 </template>

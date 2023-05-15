@@ -14,7 +14,19 @@ module.exports = {
         },
         fontFamily: {
             'serif': ['jost', 'kurale'],
-        }
+        },
+        keyframes: {
+            draw: {
+                '100%': {
+                    left: '100%',
+                    margin: '0 -35px 0 35px'
+                },
+            },
+        },
+        animation: {
+            'draw': 'draw 5s linear infinite',
+        },
+
     },
   },
   plugins: [
