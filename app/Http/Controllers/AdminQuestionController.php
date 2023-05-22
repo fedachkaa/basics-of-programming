@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use App\Models\StudySection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AdminQuestionController extends Controller
@@ -12,12 +13,9 @@ class AdminQuestionController extends Controller
 
     public function index()
     {
-        $questions = Question::all();
-
-
         return inertia('Admin/Question/Index', [
-            'questions' => $questions,
-            'studySections'=>StudySection::all()
+            'questions' => Question::all(),
+            'studySections' => StudySection::all()
         ]);
     }
 
@@ -65,43 +63,26 @@ class AdminQuestionController extends Controller
 
     public function update(Request $request, string $id)
     {
-        $validator = Validator::make($request->all(), [
-            'study_section_id' => 'required',
-            'question' => 'required|string',
-            'variant_1' => 'required',
-            'variant_2' => 'required',
-            'variant_3' => 'required',
-            'variant_4' => 'required',
-            'answer' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->route('questions.edit', $id)
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $validated = $validator->validated();
-
-        Question::where('id', $id)
-            ->update([
-                'study_section_id' => $validated['study_section_id'],
-                'question' => $validated['question'],
-                'variant_1' => $validated['variant_1'],
-                'variant_2' => $validated['variant_2'],
-                'variant_3' => $validated['variant_3'],
-                'variant_4' => $validated['variant_4'],
-                'answer' => $validated['answer']
-            ]);
+        Question::where('id', $id)->update(
+            $request->validate([
+                'study_section_id'=>'required',
+                'question'=>'required|string',
+                'variant_1'=>'required',
+                'variant_2'=>'required',
+                'variant_3'=>'required',
+                'variant_4'=>'required',
+                'answer'=>'required'
+            ])
+        );
 
         return redirect()->route('questions.index')->with('success', 'Питання змінено!');
-
     }
 
 
     public function destroy(string $id)
     {
         Question::where('id', $id)->delete();
+        DB::table('user_results')->where('question_id', $id)->delete();
 
         return redirect()->route('questions.index')->with('success', 'Питання успішно видалена!');
 

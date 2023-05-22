@@ -39,7 +39,7 @@ class IndexController extends Controller
 
             $count = count($passed_study_section);
             $questions = array_sum($passed_study_section);
-            $users_results["{$user->name} {$user->surname}"] = $questions == 0 ? 0 : round(($total / $questions) * 100, 2) * $count;
+            $users_results["{$user->name} {$user->surname}"] = $questions == 0 ? 0 : round(($total / $questions), 2) * $count;
         }
         arsort($users_results);
         $result = [];

@@ -12,7 +12,7 @@ class StudySection extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['id','title', 'content', 'image'];
+    protected $fillable = ['id','title', 'content'];
 
     public function users()
     {
